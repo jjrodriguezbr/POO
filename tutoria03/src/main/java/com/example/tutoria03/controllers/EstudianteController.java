@@ -11,6 +11,7 @@ import com.example.tutoria03.models.Estudiante;
 import com.example.tutoria03.services.EstudianteService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
@@ -30,6 +31,11 @@ public class EstudianteController {
     @PostMapping
     public ResponseEntity<Estudiante> save(@RequestBody Estudiante estudiante){
         return ResponseEntity.ok(estudianteService.save(estudiante) );
+    }
+
+    @PutMapping
+    public ResponseEntity<Estudiante> update(@RequestBody Estudiante estudiante){
+        return ResponseEntity.ok(estudianteService.update(estudiante) );
     }
 
 }
