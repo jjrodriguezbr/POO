@@ -3,10 +3,12 @@ package com.example.tutoria03.services;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.tutoria03.models.Estudiante;
 import com.example.tutoria03.repositories.IEstudianteRepository;
 
+@Service
 public class EstudianteService {
     
     // crear una instancia de repository
