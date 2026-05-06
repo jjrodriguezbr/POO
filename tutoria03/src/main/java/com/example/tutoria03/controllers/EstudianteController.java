@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.tutoria03.models.Estudiante;
 import com.example.tutoria03.services.EstudianteService;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @RestController
@@ -23,6 +25,11 @@ public class EstudianteController {
     @GetMapping
     public ResponseEntity<ArrayList<Estudiante>> getAll(){
         return ResponseEntity.ok(estudianteService.GetAll());
+    }
+
+    @PostMapping
+    public ResponseEntity<Estudiante> save(@RequestBody Estudiante estudiante){
+        return ResponseEntity.ok(estudianteService.save(estudiante) );
     }
 
 }
