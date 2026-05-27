@@ -23,12 +23,17 @@ public class EstudianteService {
     }
 
     public Estudiante save(Estudiante estudiante){
-        return estudianteRepository.save(estudiante);
+        return !existeEstudiante(estudiante.getId()) 
+                ? estudianteRepository.save(estudiante) : null;
     }
 
     public Estudiante update(Estudiante estudiante){
-        return estudianteRepository.findById(estudiante.getId()) != null 
+        return existeEstudiante(estudiante.getId())
              ?  estudianteRepository.save(estudiante) : null;
+    }
+
+    private boolean existeEstudiante(int id){
+        return estudianteRepository.findById(id) != null ? true : false;
     }
 
     public void Delete(int id){
