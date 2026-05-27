@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.tutoria03.models.Estudiante;
 import com.example.tutoria03.repositories.IEstudianteRepository;
 
@@ -17,6 +16,10 @@ public class EstudianteService {
 
     public ArrayList<Estudiante> GetAll(){
         return (ArrayList<Estudiante>) estudianteRepository.findAll();
+    }
+
+    public Estudiante GetStudentById(int id){
+        return estudianteRepository.findById(id).orElse(null);
     }
 
     public Estudiante save(Estudiante estudiante){
