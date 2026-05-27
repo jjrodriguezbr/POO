@@ -33,7 +33,7 @@ public class EstudianteService {
     }
 
     private boolean existeEstudiante(int id){
-        return estudianteRepository.findById(id) != null ? true : false;
+        return estudianteRepository.findById(id).orElse(null) == null ? false : true;
     }
 
     public void Delete(int id){
