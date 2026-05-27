@@ -27,19 +27,11 @@ public class EstudianteService {
     }
 
     public Estudiante update(Estudiante estudiante){
-
-        var existeEstudiante = estudianteRepository.findById(estudiante.getId());
-
-        if(existeEstudiante != null){
-            return estudianteRepository.save(estudiante);
-        }else{
-            return null;
-        }
-
+        return estudianteRepository.findById(estudiante.getId()) != null 
+             ?  estudianteRepository.save(estudiante) : null;
     }
 
-
-    private void Delete(int id){
+    public void Delete(int id){
        // implementar logica para borrado
        // consultar previamente si existe el estudiante
        // crear un metodo que unifique la consulta de si existe estudiante
