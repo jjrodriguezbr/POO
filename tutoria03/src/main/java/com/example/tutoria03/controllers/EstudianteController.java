@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.tutoria03.models.Estudiante;
 import com.example.tutoria03.services.EstudianteService;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,9 +40,17 @@ public class EstudianteController {
         return ResponseEntity.ok(estudianteService.save(estudiante) );
     }
 
-    @PutMapping
-    public ResponseEntity<Estudiante> update(@RequestBody Estudiante estudiante){
-        return ResponseEntity.ok(estudianteService.update(estudiante) );
+    @PutMapping("/{id}")
+    public ResponseEntity<Estudiante> update(@PathVariable("id") int id, @RequestBody Estudiante estudiante){
+        estudiante.setId(id);
+        Estudiante updated = estudianteService.update(estudiante);
+        if (updated == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(updated);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable("id") int id){
+        return ResponseEntity.ok(estudianteService.Delete(id));
     }
 
 }

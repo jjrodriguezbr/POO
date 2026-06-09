@@ -23,8 +23,12 @@ public class EstudianteService {
     }
 
     public Estudiante save(Estudiante estudiante){
-        return !existeEstudiante(estudiante.getId()) 
-                ? estudianteRepository.save(estudiante) : null;
+        if(existeCorreo(estudiante.getCorreo())) return null;
+        return estudianteRepository.save(estudiante);
+    }
+
+    private boolean existeCorreo(String correo){
+        return estudianteRepository.findByCorreo(correo) != null;
     }
 
     public Estudiante update(Estudiante estudiante){
@@ -36,11 +40,10 @@ public class EstudianteService {
         return estudianteRepository.findById(id).orElse(null) == null ? false : true;
     }
 
-    public void Delete(int id){
-       // implementar logica para borrado
-       // consultar previamente si existe el estudiante
-       // crear un metodo que unifique la consulta de si existe estudiante
-       //  para poder unificar tanta en Delete como en el update
+    public boolean Delete(int id){
+        if(!existeEstudiante(id)) return false;
+        estudianteRepository.deleteById(id);
+        return true;
     }
 
     

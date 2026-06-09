@@ -1,6 +1,9 @@
 package com.example.tutoria03.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -9,13 +12,27 @@ import jakarta.persistence.Table;
 public class Estudiante {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(length = 100)
     private String nombres;
+
+    @Column(length = 100, unique = true)
     private String correo;
+
+    @Column(length = 15)
     private String numeroTelefono;
+
+    @Column(length = 100)
     private String carrera;
+
+    @Column(length = 200)
     private String direccion;
+
+    @Column(length = 10)
     private String semestre;
+
     private boolean activo;
 
     // methods 

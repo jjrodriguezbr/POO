@@ -6,5 +6,5 @@ import com.example.tutoria03.models.Estudiante;
 
 @Repository
 public interface IEstudianteRepository extends CrudRepository<Estudiante,Integer> {
-    // reescribir o hacer consulta sql nativa
+    Estudiante findByCorreo(String correo);
 }
