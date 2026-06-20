@@ -14,9 +14,9 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
             .info(new Info()
-                .title("API Estudiantes - Grupo 01")
+                .title("API APOO - Grupo 01")
                 .version("1.0.0")
-                .description("API REST para gestión de estudiantes - Tutorías APOO")
+                .description("API REST para gestión de estudiantes y docentes - Convocatoria APOO")
                 .contact(new Contact()
                     .name("Grupo 01")
                     .email("grupo01@yopmail.com")));
